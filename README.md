@@ -1,3 +1,3 @@
-NP1 - Letícia Oliveira e Adrielli Da Silva
+NPC1 - Letícia Oliveira and Adrielli Da Silva
 
-Trabalho de faculdade sobre polimorfismo e exceções
+Very simple college project on polymorphism and exceptions

@@ -8,7 +8,10 @@ class Main {
 			Scanner teclado_string = new Scanner(System.in);
 			Scanner teclado_int = new Scanner(System.in);
 			String[] cores_completo = {"Vermelho", "Laranja", "Amarelo", "Verde", "Azul", "Roxo"};
-			
+			System.out.println("Esse e um jogo de tabuleiro simples criado originalmente para um projeto de POO de faculdade.");
+			System.out.println("Voce deve escolher o número de jogadores de cada classe, seus nomes (em ASCII), e entao voces irao jogar um jogo de sorte.");
+			System.out.println("Joga-se dois dados simultaneos para mover suas pecas pelo tabuleiro. Existem algumas casas especiais que:");
+			System.out.println("avancam casas extras, trocam de posicao com outros jogadores, fazem jogadores ficarem preso por 1 turno, etc");
 			System.out.println("iniciar no modo debug? [s/n]");
 			String debug = teclado_string.nextLine();
 			Jogo jogo;
@@ -22,6 +25,8 @@ class Main {
 			int total = 6;
 			boolean select = true;
 			while (select){
+				System.out.println("Selecione o número de jogadores de cada categoria, depois escolha seus nomes");
+				System.out.println("(Sortudo nunca tira abaixo de 7 e azarado nunca tira acima de 6)");
 				System.out.println("Numero total de jogadores deve ser de 2 a 6");
 				System.out.println("Digite o numero de jogadores normais (max: 5): ");
 				int num1 = teclado_int.nextInt();
@@ -38,18 +43,24 @@ class Main {
 					
 					int cor_count = 0;
 					for (int i = 0; i < num1; i++){
-						jogo.criarJogador(cores_completo[cor_count], "normal");
-						System.out.println("Jogador " + cores_completo[cor_count] + " (normal) entrou no jogo!");
+						System.out.println("Digite o nome de um jogador normal: ");
+						String nome = teclado_string.nextLine();
+						jogo.criarJogador(nome, cores_completo[cor_count], "normal");
+						System.out.println("Jogador normal " + nome + " ("+ cores_completo[cor_count] +") entrou no jogo!");
 						cor_count++;
 					}
 					for (int i = 0; i < num2; i++){
-						jogo.criarJogador(cores_completo[cor_count], "azarado");
-						System.out.println("Jogador " + cores_completo[cor_count] + " (azarado) entrou no jogo!");
+						System.out.println("Digite o nome de um jogador azarado: ");
+						String nome = teclado_string.nextLine();
+						jogo.criarJogador(nome, cores_completo[cor_count], "azarado");
+						System.out.println("Jogador azarado " + nome + " ("+ cores_completo[cor_count] +") entrou no jogo!");
 						cor_count++;
 					}
 					for (int i = 0; i < num3; i++){
-						jogo.criarJogador(cores_completo[cor_count], "sortudo");
-						System.out.println("Jogador " + cores_completo[cor_count] + " (sortudo) entrou no jogo!");
+						System.out.println("Digite o nome de um jogador sortudo: ");
+						String nome = teclado_string.nextLine();
+						jogo.criarJogador(nome, cores_completo[cor_count], "sortudo");
+						System.out.println("Jogador sortudo " + nome + " ("+ cores_completo[cor_count] +") entrou no jogo!");
 						cor_count++;
 					}
 				}

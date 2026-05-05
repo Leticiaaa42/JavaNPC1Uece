@@ -2,8 +2,8 @@ import java.util.Scanner;
 
 public class JogadorSortudo extends Jogador{
 	
-	public JogadorSortudo(String cor, int casa_atual, int numero_de_jogadas){
-		super(cor, casa_atual, numero_de_jogadas);
+	public JogadorSortudo(String nome, String cor, int casa_atual, int numero_de_jogadas){
+		super(nome, cor, casa_atual, numero_de_jogadas);
 	}
 	
 	public int lancarDados(boolean debug){

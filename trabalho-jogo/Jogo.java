@@ -48,7 +48,7 @@ public class Jogo{
 			}
 			
 			jogador.setCasaAtual(jogador.getCasaAtual() + lancamento);
-			System.out.println("Jogador " + jogador.getNome() + " move " + lancamento + " casas e cai na posicao " + jogador.getCasaAtual());
+			System.out.println("Jogador " + jogador.getNome() + " move " + lancamento + " casas e cai na posição " + jogador.getCasaAtual());
 			
 			if (jogador.getCasaAtual() >= 40){ //vitoria
 				System.out.println("=|=|= O jogador " + jogador.getNome() + " ganhou o jogo! =|=|=");
@@ -76,17 +76,17 @@ public class Jogo{
 			}
 			else if (jogador.getCasaAtual() == 5 || jogador.getCasaAtual() == 15 || jogador.getCasaAtual() == 30){ //jogador move 3 casas a mais
 				jogador.setCasaAtual(jogador.getCasaAtual() + 3);
-				System.out.println("Sorte! O jogador " + jogador.getNome() + " avanca 3 casas adicionais e agora esta na casa " + jogador.getCasaAtual());
+				System.out.println("Sorte! O jogador " + jogador.getNome() + " avança 3 casas adicionais e agora esta na casa " + jogador.getCasaAtual());
 			}
 			else if (jogador.getCasaAtual() == 17 || jogador.getCasaAtual() == 27){ //jogador escolhe alguém para recomeçar o jogo
-				System.out.println("O jogador " + jogador.getNome() + " tem o direito de fazer um jogador voltar para o comeco!");
+				System.out.println("O jogador " + jogador.getNome() + " tem o direito de fazer um jogador voltar para o começo!");
 				
 				String nome_selecionado = null;
 				Jogador jogador_selecionado = null;
 				boolean nome_valido = false;
 				
 				while (!nome_valido){
-					System.out.println("Digite um nome valido: ");
+					System.out.println("Digite um nome válido: ");
 					nome_selecionado = teclado_string.nextLine();
 					
 					for (Jogador jogador_analisado : lista_jogadores){
@@ -115,7 +115,7 @@ public class Jogo{
 				atrasado.setCasaAtual(jogador.getCasaAtual());
 				jogador.setCasaAtual(menor_posicao);
 				
-				System.out.println("Azar! O jogador " + jogador.getNome() + " trocou de posicao com o jogador " + atrasado.getNome() + " e agora esta na posicao " + menor_posicao + ".");
+				System.out.println("Azar! O jogador " + jogador.getNome() + " trocou de posição com o jogador " + atrasado.getNome() + " e agora esta na posição " + menor_posicao + ".");
 			}
 		}
 		if (dado_repetido){
@@ -129,8 +129,8 @@ public class Jogo{
 	public void computarJogo(){
 		ArrayList<String> nomes = new ArrayList<String>();
 		while (0 == 0){
-			System.out.println("RODADA COMECA:");
-			System.out.println("Digite o nome dos jogadores que NAO jogarao nessa rodada, um em cada linha, e termine com uma linha com um '.':");
+			System.out.println("RODADA COMEçA:");
+			System.out.println("Digite o nome dos jogadores que NAO jogarão nessa rodada, um em cada linha, e termine com uma linha com um '.':");
 			String nome = "teste"; nomes.add(nome);
 			nomes.clear();
 			nome = teclado_string.nextLine();
@@ -151,7 +151,7 @@ public class Jogo{
 				if (!jogador_invalido){
 					if (computarRodada(jogador)){//jogador venceu
 						for (Jogador jogador_final : lista_jogadores){
-							System.out.println("O jogador " + jogador_final.getNome() + " terminou com " + jogador_final.getNumeroDeJogadas() + " jogadas e na posicao " + jogador_final.getCasaAtual());
+							System.out.println("O jogador " + jogador_final.getNome() + " terminou com " + jogador_final.getNumeroDeJogadas() + " jogadas e na posição " + jogador_final.getCasaAtual());
 						}
 						return;
 					}

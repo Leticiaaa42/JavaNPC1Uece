@@ -8,10 +8,10 @@ class Main {
 			Scanner teclado_string = new Scanner(System.in);
 			Scanner teclado_int = new Scanner(System.in);
 			String[] cores_completo = {"Vermelho", "Laranja", "Amarelo", "Verde", "Azul", "Roxo"};
-			System.out.println("Esse e um jogo de tabuleiro simples criado originalmente para um projeto de POO de faculdade.");
-			System.out.println("Voce deve escolher o número de jogadores de cada classe, seus nomes (em ASCII), e entao voces irao jogar um jogo de sorte.");
-			System.out.println("Joga-se dois dados simultaneos para mover suas pecas pelo tabuleiro. Existem algumas casas especiais que:");
-			System.out.println("avancam casas extras, trocam de posicao com outros jogadores, fazem jogadores ficarem preso por 1 turno, etc");
+			System.out.println("Esse é um jogo de tabuleiro simples criado originalmente para um projeto de POO de faculdade.");
+			System.out.println("Você deve escolher o número de jogadores de cada classe, seus nomes, e então vocês irão jogar um jogo de sorte.");
+			System.out.println("Joga-se dois dados simultâneos para mover suas pecas pelo tabuleiro. Existem algumas casas especiais que:");
+			System.out.println("avançam casas extras, trocam de posição com outros jogadores, fazem jogadores ficarem preso por 1 turno, etc");
 			System.out.println("iniciar no modo debug? [s/n]");
 			String debug = teclado_string.nextLine();
 			Jogo jogo;
@@ -36,7 +36,7 @@ class Main {
 				int num3 = teclado_int.nextInt();
 				
 				if (num1 > 5 || num2 > 5 || num3 > 5 || num1 + num2 + num3 < 2 || num1 + num2 + num3 > 6){
-					System.out.println("Configuracao invalida - refaca");
+					System.out.println("Configuração invalida - refaça");
 				} 
 				else{
 					select = false;
@@ -66,7 +66,7 @@ class Main {
 				}
 			}
 			
-			System.out.println("=== O JOGO COMECOU ===");
+			System.out.println("=== O JOGO COMEÇOU ===");
 			jogo.computarJogo();
 			
 			System.out.println("Jogar de novo? [s/n]");

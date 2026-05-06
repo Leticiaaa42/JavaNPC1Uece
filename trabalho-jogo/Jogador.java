@@ -1,15 +1,21 @@
 import java.util.Random;
 
 public abstract class Jogador{
+	private String nome;
 	private String cor;
 	private int casa_atual;
 	private int numero_de_jogadas;
 	private boolean preso;
 	
-	public Jogador(String cor, int casa_atual, int numero_de_jogadas){
+	public Jogador(String nome, String cor, int casa_atual, int numero_de_jogadas){
+		this.nome = nome;
 		this.cor = cor;
 		this.casa_atual = casa_atual;
 		this.numero_de_jogadas = numero_de_jogadas;
+	}
+
+	public String getNome(){
+		return nome;
 	}
 	
 	public String getCor(){

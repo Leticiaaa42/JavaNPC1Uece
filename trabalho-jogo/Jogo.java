@@ -45,6 +45,7 @@ public class Jogo{
 				lancamento -= 100;
 				dado_repetido = true;
 				System.out.println(jogador.getNome() + " tirou o mesmo número nos dois dados e tem direito a jogar de novo!");
+				mostrarTabuleiro();
 			}
 			
 			jogador.setCasaAtual(jogador.getCasaAtual() + lancamento);
@@ -60,19 +61,23 @@ public class Jogo{
 			}
 			else if (jogador.getCasaAtual() == 13){ //jogador muda para um tipo aleatorio
 				Random rand = new Random();
+				Jogador novoJogador; //criado pois o jogador mudava mas nao na lista.
 				int aleatorio = rand.nextInt(3);
 				if (aleatorio == 0){
-					jogador = new JogadorNormal(jogador.getNome(), jogador.getCor(), jogador.getCasaAtual(), jogador.getNumeroDeJogadas());
+					novoJogador = new JogadorNormal(jogador.getNome(), jogador.getCor(), jogador.getCasaAtual(), jogador.getNumeroDeJogadas());
 					System.out.println(jogador.getNome() + " puxa uma carta para mudar de tipo e agora é: normal!");
 				}
 				else if (aleatorio == 1){
-					jogador = new JogadorAzarado(jogador.getNome(), jogador.getCor(), jogador.getCasaAtual(), jogador.getNumeroDeJogadas());
+					novoJogador= new JogadorAzarado(jogador.getNome(), jogador.getCor(), jogador.getCasaAtual(), jogador.getNumeroDeJogadas());
 					System.out.println(jogador.getNome() + " puxa uma carta para mudar de tipo e agora é: azarado!");
 				}
 				else{
-					jogador = new JogadorSortudo(jogador.getNome(), jogador.getCor(), jogador.getCasaAtual(), jogador.getNumeroDeJogadas());
+					novoJogador= new JogadorSortudo(jogador.getNome(), jogador.getCor(), jogador.getCasaAtual(), jogador.getNumeroDeJogadas());
 					System.out.println(jogador.getNome() + " puxa uma carta para mudar de tipo e agora é: sortudo!");
 				}
+				int indice = lista_jogadores.indexOf(jogador);
+				lista_jogadores.set(indice, novoJogador);
+				jogador = novoJogador; //aqui o jogador atual é trocado pelo novo criado.
 			}
 			else if (jogador.getCasaAtual() == 5 || jogador.getCasaAtual() == 15 || jogador.getCasaAtual() == 30){ //jogador move 3 casas a mais
 				jogador.setCasaAtual(jogador.getCasaAtual() + 3);
@@ -118,12 +123,60 @@ public class Jogo{
 				System.out.println("Azar! " + jogador.getNome() + " trocou de posição com " + atrasado.getNome() + " e agora esta na posição " + menor_posicao + ".");
 			}
 		}
+		
+		mostrarTabuleiro();
 		if (dado_repetido){
 			System.out.println(jogador.getNome() + " joga novamente:");
 			return computarRodada(jogador); //computar outra rodada caso os dados tenham saído repetidos
 		}
-		
 		return false;
+	}
+	
+	public void mostrarTabuleiro(){
+	    for (int casa = 0; casa <= 40; casa++){
+	        String conteudoCasa = "";
+	        // verifica quais jogadores estão nessa casa
+	        for (Jogador jogador : lista_jogadores){
+
+	            if (jogador.getCasaAtual() == casa){
+
+	                if (!conteudoCasa.equals("")){
+	                    conteudoCasa += "-";
+	                }
+
+	                conteudoCasa += "\"" + jogador.getNome() + "\"";
+	            }
+	        }
+	        if (casa == 21) {
+	        	System.out.println();
+	        }
+	        if (casa == 0){
+	            if (conteudoCasa.equals("")){
+	                System.out.print("[INICIO]");
+	            }
+	            else{
+	                System.out.print("[INICIO-" + conteudoCasa + "]");
+	            }
+	        }
+	        else if (casa == 40){
+	            if (conteudoCasa.equals("")){
+	                System.out.print("[40-FINAL]");
+	            }
+	            else{
+	                System.out.print("[40-FINAL-" + conteudoCasa + "]");
+	            }
+	        }
+	        else{
+
+	            if (conteudoCasa.equals("")){
+	                System.out.print("[" + casa + "]");
+	            }
+	            else{
+	                System.out.print("[" + casa + "-" + conteudoCasa + "]");
+	            }
+	        }
+	    }
+	    System.out.println("");
 	}
 	
 	public void computarJogo(){
@@ -139,6 +192,7 @@ public class Jogo{
 				nomes.add(nome);
 				nome = teclado_string.nextLine();
 			}
+			limpaConsole();
 			
 			for (Jogador jogador : lista_jogadores){
 				boolean jogador_invalido = false;
@@ -158,6 +212,14 @@ public class Jogo{
 				}
 			}
 		}
+	}
+	
+	public static void limpaConsole() { //so existe pra limpar o console
+		int i=0;
+	    while(i<40){
+	    	System.out.println();
+	    	i++;
+	    }
 	}
 	
 }

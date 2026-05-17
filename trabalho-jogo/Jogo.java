@@ -135,7 +135,6 @@ public class Jogo{
 	public void mostrarTabuleiro(){
 	    for (int casa = 0; casa <= 40; casa++){
 	        String conteudoCasa = "";
-	        // verifica quais jogadores estão nessa casa
 	        for (Jogador jogador : lista_jogadores){
 
 	            if (jogador.getCasaAtual() == casa){
@@ -147,7 +146,7 @@ public class Jogo{
 	                conteudoCasa += "\"" + jogador.getNome() + "\"";
 	            }
 	        }
-	        if (casa == 21) {
+	        if (casa == 21) { //So existe para ajeitar o tabuleiro
 	        	System.out.println();
 	        }
 	        if (casa == 0){
@@ -156,6 +155,46 @@ public class Jogo{
 	            }
 	            else{
 	                System.out.print("[INICIO-" + conteudoCasa + "]");
+	            }
+	        }
+	        else if(casa == 10 || casa == 25 || casa == 38) {
+	        	if (conteudoCasa.equals("")){
+	                System.out.printf("[%s-PRISAO]", casa);
+	            }
+	            else{
+	                System.out.print("["+casa+"-PRISAO-"+conteudoCasa+"]");
+	            }
+	        }
+	        else if (casa == 13){
+	            if (conteudoCasa.equals("")){
+	                System.out.print("[13-CARTAS]");
+	            }
+	            else{
+	                System.out.print("[13-CARTAS-" + conteudoCasa + "]");
+	            }
+	        }
+	        else if(casa == 5 || casa == 15 || casa == 30) {
+	        	if (conteudoCasa.equals("")){
+	                System.out.printf("[%s-AVANÇA+3]", casa);
+	            }
+	            else{
+	                System.out.print("["+casa+"-AVANÇA+3-"+conteudoCasa+"]");
+	            }
+	        }
+	        else if(casa == 17 || casa == 27) {
+	        	if (conteudoCasa.equals("")){
+	                System.out.printf("[%s-PRO_INICIO]", casa);
+	            }
+	            else{
+	                System.out.print("["+casa+"-PRO_INICIO-"+conteudoCasa+"]");
+	            }
+	        }
+	        else if(casa == 20 || casa == 35) {
+	        	if (conteudoCasa.equals("")){
+	                System.out.printf("[%s-TROCA_DE_LUGAR]", casa);
+	            }
+	            else{
+	                System.out.print("["+casa+"-TROCA_DE_LUGAR-"+conteudoCasa+"]");
 	            }
 	        }
 	        else if (casa == 40){

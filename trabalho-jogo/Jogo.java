@@ -223,11 +223,8 @@ public class Jogo{
 		int rodada = 1;
 		while (true){
 			if(rodada != 1) {
-				System.out.println("Analize a rodada passada e entao aperte ponto final ('.') depois de ver o jogo:");
-				String continua = teclado_string.nextLine();
-				while (!continua.equalsIgnoreCase(".")){
-					continua = teclado_string.nextLine();
-				}
+				System.out.println("Veja a posição atual das peças e entao aperte ENTER para continuar o jogo:");
+				teclado_string.nextLine();
 				limpaConsole();
 				System.out.println("RODADA "+rodada+" COMEçA:");
 			}

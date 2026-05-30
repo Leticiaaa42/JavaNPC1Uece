@@ -120,7 +120,7 @@ public class Jogo{
 				atrasado.setCasaAtual(jogador.getCasaAtual());
 				jogador.setCasaAtual(menor_posicao);
 				
-				System.out.println("Azar! " + jogador.getNome() + " trocou de posição com " + atrasado.getNome() + " e agora esta na posição " + menor_posicao + ".");
+				System.out.println("que Azar! " + jogador.getNome() + " trocou de posição com " + atrasado.getNome() + " e agora esta na posição " + menor_posicao + ".");
 			}
 		}
 		
@@ -220,7 +220,7 @@ public class Jogo{
 	
 	public void computarJogo(){
 		ArrayList<String> nomes = new ArrayList<String>();
-		while (0 == 0){
+		while (true){
 			System.out.println("RODADA COMEçA:");
 			System.out.println("Digite o nome dos jogadores que NÃO jogarão nessa rodada, um em cada linha, e termine com uma linha com um '.':");
 			String nome = "teste"; nomes.add(nome);

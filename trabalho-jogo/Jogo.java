@@ -220,34 +220,26 @@ public class Jogo{
 	
 	public void computarJogo(){
 		ArrayList<String> nomes = new ArrayList<String>();
+		int rodada = 1;
 		while (true){
-			System.out.println("RODADA COMEçA:");
-			System.out.println("Digite o nome dos jogadores que NÃO jogarão nessa rodada, um em cada linha, e termine com uma linha com um '.':");
-			String nome = "teste"; nomes.add(nome);
-			nomes.clear();
-			nome = teclado_string.nextLine();
-			
-			while (!nome.equalsIgnoreCase(".")){
-				nomes.add(nome);
-				nome = teclado_string.nextLine();
-			}
-			limpaConsole();
-			
-			for (Jogador jogador : lista_jogadores){
-				boolean jogador_invalido = false;
-				for (String nome_verificado : nomes){
-					if (jogador.getNome().equalsIgnoreCase(nome_verificado)){
-						jogador_invalido = true;
-					}
+			if(rodada != 1) {
+				System.out.println("Analize a rodada passada e entao aperte ponto final ('.') depois de ver o jogo:");
+				String continua = teclado_string.nextLine();
+				while (!continua.equalsIgnoreCase(".")){
+					continua = teclado_string.nextLine();
 				}
-				
-				if (!jogador_invalido){
-					if (computarRodada(jogador)){//jogador venceu
-						for (Jogador jogador_final : lista_jogadores){
-							System.out.println(jogador_final.getNome() + " terminou com " + jogador_final.getNumeroDeJogadas() + " jogadas e na posição " + jogador_final.getCasaAtual());
-						}
-						return;
+				limpaConsole();
+				System.out.println("RODADA "+rodada+" COMEçA:");
+			}
+			else{System.out.println("RODADA COMEçA:");};
+			rodada++;
+			
+			for(Jogador obj_jogador : lista_jogadores) {
+				if (computarRodada(obj_jogador)){//jogador venceu
+					for (Jogador jogador_final : lista_jogadores){
+						System.out.println(jogador_final.getNome() + " terminou com " + jogador_final.getNumeroDeJogadas() + " jogadas e na posição " + jogador_final.getCasaAtual());
 					}
+					return;
 				}
 			}
 		}

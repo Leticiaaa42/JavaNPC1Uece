@@ -13,14 +13,19 @@ class Main {
 			System.out.println("Joga-se dois dados simultâneos para mover suas peças pelo tabuleiro. Existem algumas casas especiais que:");
 			System.out.println("avançam casas extras, trocam de posição com outros jogadores, fazem jogadores ficarem preso por 1 turno, etc");
 			System.out.println("Iniciar no modo debug? [s/n]");
-			String debug = teclado.nextLine();
+			String debug;
 			Jogo jogo;
-			
-			if (debug.equalsIgnoreCase("s")){
-				jogo = new Jogo(true);
-			}
-			else{
-				jogo = new Jogo(false);
+			while(true) {
+				debug = teclado.nextLine(); 
+				if (debug.equalsIgnoreCase("s")){
+					jogo = new Jogo(true);
+					break;
+				}
+				else if(debug.equalsIgnoreCase("n")){
+					jogo = new Jogo(false);
+					break;
+				}
+				else {System.out.println("digite uma opção valida.");}
 			}
 			
 			int total = 6;

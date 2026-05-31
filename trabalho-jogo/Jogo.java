@@ -120,7 +120,7 @@ public class Jogo{
 				atrasado.setCasaAtual(jogador.getCasaAtual());
 				jogador.setCasaAtual(menor_posicao);
 				
-				System.out.println("Azar! " + jogador.getNome() + " trocou de posição com " + atrasado.getNome() + " e agora esta na posição " + menor_posicao + ".");
+				System.out.println("que Azar! " + jogador.getNome() + " trocou de posição com " + atrasado.getNome() + " e agora esta na posição " + menor_posicao + ".");
 			}
 		}
 		
@@ -220,34 +220,23 @@ public class Jogo{
 	
 	public void computarJogo(){
 		ArrayList<String> nomes = new ArrayList<String>();
-		while (0 == 0){
-			System.out.println("RODADA COMEçA:");
-			System.out.println("Digite o nome dos jogadores que NÃO jogarão nessa rodada, um em cada linha, e termine com uma linha com um '.':");
-			String nome = "teste"; nomes.add(nome);
-			nomes.clear();
-			nome = teclado_string.nextLine();
-			
-			while (!nome.equalsIgnoreCase(".")){
-				nomes.add(nome);
-				nome = teclado_string.nextLine();
+		int rodada = 1;
+		while (true){
+			if(rodada != 1) {
+				System.out.println("Veja a posição atual das peças e entao aperte ENTER para continuar o jogo:");
+				teclado_string.nextLine();
+				limpaConsole();
+				System.out.println("RODADA "+rodada+" COMEçA:");
 			}
-			limpaConsole();
+			else{System.out.println("RODADA COMEçA:");};
+			rodada++;
 			
-			for (Jogador jogador : lista_jogadores){
-				boolean jogador_invalido = false;
-				for (String nome_verificado : nomes){
-					if (jogador.getNome().equalsIgnoreCase(nome_verificado)){
-						jogador_invalido = true;
+			for(Jogador obj_jogador : lista_jogadores) {
+				if (computarRodada(obj_jogador)){//jogador venceu
+					for (Jogador jogador_final : lista_jogadores){
+						System.out.println(jogador_final.getNome() + " terminou com " + jogador_final.getNumeroDeJogadas() + " jogadas e na posição " + jogador_final.getCasaAtual());
 					}
-				}
-				
-				if (!jogador_invalido){
-					if (computarRodada(jogador)){//jogador venceu
-						for (Jogador jogador_final : lista_jogadores){
-							System.out.println(jogador_final.getNome() + " terminou com " + jogador_final.getNumeroDeJogadas() + " jogadas e na posição " + jogador_final.getCasaAtual());
-						}
-						return;
-					}
+					return;
 				}
 			}
 		}
